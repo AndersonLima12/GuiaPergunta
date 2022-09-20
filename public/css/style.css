@@ -1,0 +1,10 @@
+body {
+  background-color: #eceff1;
+}
+.card-header {
+  background-color: white;
+}
+.navbar {
+  color: white;
+  padding-left: 15px;
+}
