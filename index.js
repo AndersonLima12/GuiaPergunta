@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./data/database");
 const Pergunta = require("./data/Pergunta");
+const Resposta = require("./data/Resposta");
 
 // Database
 connection
@@ -60,6 +61,17 @@ app.get("/pergunta/:id", (req, res) => {
     } else {
       res.redirect("/"); // Não encontrada
     }
+  });
+});
+
+app.post("/responder", (req, res) => {
+  var corpo = req.body.corpo;
+  var perguntaId = req.body.pergunta;
+  Resposta.create({
+    corpo: corpo,
+    perguntaId: perguntaId,
+  }).then(() => {
+    res.redirect("/pergunta/" + perguntaId);
   });
 });
 
