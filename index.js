@@ -55,9 +55,15 @@ app.get("/pergunta/:id", (req, res) => {
     where: { id: id },
   }).then((pergunta) => {
     if (pergunta != undefined) {
-      res.render("pergunta", {
-        pergunta: pergunta,
-      }); // Pergunta encontrada
+      Resposta.findAll({
+        where: { perguntaId: pergunta.id },
+        order: [["id", "DESC"]],
+      }).then((respostas) => {
+        res.render("pergunta", {
+          pergunta: pergunta,
+          respostas: respostas,
+        }); // Pergunta encontrada});
+      });
     } else {
       res.redirect("/"); // Não encontrada
     }
