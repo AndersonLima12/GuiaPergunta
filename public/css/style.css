@@ -11,3 +11,12 @@ body {
 .card {
   margin-top: 5vh;
 }
+#button-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#voltar {
+  margin-top: -50px;
+}
